@@ -15,4 +15,11 @@ export default createMuiTheme({
             contrastText: '#fff',
         },
     },
+    overrides: {
+        MuiPaper: {
+            root: {
+                backgroundColor: '#FFF3E0',
+            },
+        },
+    },
 })
