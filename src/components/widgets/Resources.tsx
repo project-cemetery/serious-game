@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 
 export default () =>
-    <AppBar position="static" color="default">
+    <AppBar position="static" color="primary">
         <Toolbar>
             <Typography variant="title" color="inherit" style={{flex: 1}}>
                 Севернее Кореи
