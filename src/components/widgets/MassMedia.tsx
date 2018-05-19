@@ -15,10 +15,22 @@ export default class MassMedia extends React.PureComponent<{}, {}> {
                     <ListSubheader component="div">Новости</ListSubheader>
                 }>
                     <ListItem>
-                        <ListItemText primary="Trash" secondary="Все пропало" />
+                        <ListItemText
+                            primary="РБК"
+                            secondary="Полный состав нового российского правительства"
+                        />
                     </ListItem>
                     <ListItem>
-                        <ListItemText primary="Trash" secondary="Все пропало" />
+                        <ListItemText
+                            primary="Meduza"
+                            secondary="В Москве прошел учредительный съезд партии Навального"
+                        />
+                    </ListItem>
+                    <ListItem>
+                        <ListItemText
+                            primary="RT на русском"
+                            secondary="Абэ выразил надежду на достижение прогресса в заключении мирного договора с РФ"
+                        />
                     </ListItem>
                 </List>
             </Paper>

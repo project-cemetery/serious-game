@@ -28,10 +28,13 @@ export default class FreeActions extends React.PureComponent<{}, State> {
                     <ListSubheader component="div">Действия</ListSubheader>
                 }>
                     <ListItem button>
-                        <ListItemText primary="Trash" />
+                        <ListItemText primary="Законы" secondary="Издать репрессивный закон" />
                     </ListItem>
                     <ListItem button>
-                        <ListItemText primary="Trash" />
+                        <ListItemText primary="Налоги" secondary="Снизить налоги" />
+                    </ListItem>
+                    <ListItem button>
+                        <ListItemText primary="Подчиненные" secondary="Устроить ротацию губернаторов" />
                     </ListItem>
                 </List>
             </Paper>
