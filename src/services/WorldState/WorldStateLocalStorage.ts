@@ -40,7 +40,6 @@ export default class WorldStateLocalStorage implements WorldState {
         }
     }
 
-
     // tslint:disable-next-line:ban-types
     public setState(state: Object) {
         const oldState = this.getState()
