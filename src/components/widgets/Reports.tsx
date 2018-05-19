@@ -13,7 +13,7 @@ const styles = {
     `,
 }
 
-export default class Event extends React.PureComponent<{}, {}> {
+export default class Reports extends React.PureComponent<{}, {}> {
 
     public render() {
         return (
@@ -21,7 +21,7 @@ export default class Event extends React.PureComponent<{}, {}> {
                 <Paper className={styles.container}>
                     <List>
                         <ListItem button>
-                            <ListItemText primary="Завершить неделю" />
+                            <ListItemText primary="Архив отчетов" />
                         </ListItem>
                     </List>
                 </Paper>
