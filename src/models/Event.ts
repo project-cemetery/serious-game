@@ -6,5 +6,6 @@ export default interface Event {
 
 export interface Option {
     title: string
+    // tslint:disable-next-line:ban-types
     consequences: Function
 }

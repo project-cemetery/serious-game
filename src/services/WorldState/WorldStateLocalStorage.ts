@@ -8,7 +8,7 @@ const initialState = {
     money: 0,
     people: 0,
     internalOpinion: 0,
-    externalOpinion: 0
+    externalOpinion: 0,
 }
 
 @injectable()
@@ -34,13 +34,14 @@ export default class WorldStateLocalStorage implements WorldState {
 
         if (state) {
             this.setState(initialState)
-            return initialState
+            return initialState as any // TODO: fix it!
         } else {
             return state
         }
     }
 
 
+    // tslint:disable-next-line:ban-types
     public setState(state: Object) {
         const oldState = this.getState()
 
@@ -52,4 +53,3 @@ export default class WorldStateLocalStorage implements WorldState {
     }
 
 }
-
