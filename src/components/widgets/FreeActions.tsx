@@ -23,9 +23,9 @@ export default class FreeActions extends React.PureComponent<{}, State> {
         console.log(actions)
 
         return (
-            <Paper>
+            <Paper style={{ opacity: 0.9 }}>
                 <List subheader={
-                    <ListSubheader component="div">Действия</ListSubheader>
+                    <ListSubheader>Действия</ListSubheader>
                 }>
                     <ListItem button>
                         <ListItemText primary="Законы" secondary="Издать репрессивный закон" />

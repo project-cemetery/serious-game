@@ -10,7 +10,7 @@ export default class MassMedia extends React.PureComponent<{}, {}> {
 
     public render() {
         return (
-            <Paper>
+            <Paper style={{ opacity: 0.9 }}>
                 <List subheader={
                     <ListSubheader component="div">Новости</ListSubheader>
                 }>

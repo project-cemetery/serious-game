@@ -16,10 +16,11 @@ const styles = {
     container: css`
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
-        grid-template-rows: 1fr 128px;
+        grid-template-rows: 1fr 64px;
+        grid-row-gap: 2rem;
         margin: 2rem;
 
-        height: calc(100vh - 2rem - 64px);
+        height: calc(100vh - 4rem - 64px);
     `,
 }
 

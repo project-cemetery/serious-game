@@ -11,9 +11,9 @@ export default () =>
             <Typography variant="title" color="inherit" style={{flex: 1}}>
                 Севернее Кореи
             </Typography>
-            <Button color="inherit">деньги</Button>
-            <Button color="inherit">население</Button>
-            <Button color="inherit">рейтинг</Button>
-            <Button color="inherit">дипломатия</Button>
+            <Button color="inherit">💰 деньги</Button>
+            <Button color="inherit">👨‍👩‍👧 население</Button>
+            <Button color="inherit">📈 рейтинг</Button>
+            <Button color="inherit">🏰 дипломатия</Button>
         </Toolbar>
     </AppBar>
