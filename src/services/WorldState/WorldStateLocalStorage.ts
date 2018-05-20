@@ -39,6 +39,14 @@ const initialState = {
 
 @injectable()
 export default class WorldStateLocalStorage implements WorldState {
+    public constructor() {
+        const state = localStorage.getItem(STATE_KEY)
+
+        if (!state) {
+            localStorage.setItem(STATE_KEY, JSON.stringify(initialState))
+        }
+    }
+
     public getMoney() {
        return this.getStateDescription('money')
     }
@@ -56,14 +64,7 @@ export default class WorldStateLocalStorage implements WorldState {
     }
 
     public getState() {
-        const state = localStorage.getItem(STATE_KEY)
-
-        if (state) {
-            return state
-        } else {
-            this.setState(initialState)
-            return initialState as any // TODO: fix it!
-        }
+        return localStorage.getItem(STATE_KEY) || initialState
     }
 
     // tslint:disable-next-line:ban-types

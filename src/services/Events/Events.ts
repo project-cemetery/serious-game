@@ -11,7 +11,7 @@ const events = [
             { title: 'Опция 2', description: 'Описание', consequences: (state: Object) => state },
         ],
 
-    }
+    },
 ]
 
 export default class Events implements EventsInterface {

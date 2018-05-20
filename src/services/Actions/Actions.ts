@@ -6,7 +6,7 @@ const actions = [
         description: 'Описание',
         // tslint:disable-next-line:ban-types
         consequences: (state: Object) => state,
-        slider: { min: 0, max: 10 }
+        slider: { min: 0, max: 10 },
     },
 ]
 
