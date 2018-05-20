@@ -7,11 +7,20 @@ import Typography from '@material-ui/core/Typography'
 
 import GenericModal from './common/GenericModal'
 
+import container from '../../services'
+import TYPES from '../../services/types'
+import WorldState from '../../services/WorldState'
+
 interface State {
     moneyIsOpen: boolean
     peopleIsOpen: boolean
     ratingIsOpen: boolean
     diplomacyIsOpen: boolean
+
+    moneyState: string,
+    peopleState: string,
+    ratingState: string,
+    diplomacyState: string,
 }
 
 export default class Resources extends React.PureComponent<{}, State> {
@@ -21,6 +30,11 @@ export default class Resources extends React.PureComponent<{}, State> {
         peopleIsOpen: false,
         ratingIsOpen: false,
         diplomacyIsOpen: false,
+
+        moneyState: '',
+        peopleState: '',
+        ratingState: '',
+        diplomacyState: '',
     } as State
 
     public render() {
@@ -41,7 +55,9 @@ export default class Resources extends React.PureComponent<{}, State> {
                         title="Министр финансов"
                         open={this.state.moneyIsOpen}
                         closeModal={this.closeMoneyModal}
-                    />
+                    >
+                        <p>{this.state.diplomacyState}</p>
+                    </GenericModal>
 
                     <GenericModal
                         title="Министр здравоохранения"
@@ -63,6 +79,17 @@ export default class Resources extends React.PureComponent<{}, State> {
                 </React.Fragment>
             </AppBar>
         )
+    }
+
+    public componentDidMount() {
+        const worldService = container.get<WorldState>(TYPES.WorldState)
+
+        this.setState({
+            moneyState: worldService.getMoney(),
+            peopleState: worldService.getPeople(),
+            ratingState: worldService.getInternalOpinion(),
+            diplomacyState: worldService.getInternalOpinion(),
+        })
     }
 
     private openMoneyModal = () => this.setState({ moneyIsOpen: true })

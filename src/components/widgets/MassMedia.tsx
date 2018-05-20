@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper'
 
 import NewsModel from '../../models/News'
 import container from '../../services'
-import NewsInterface from '../../services/News'
+import NewsService from '../../services/News'
 import TYPES from '../../services/types'
 
 interface State {
@@ -40,7 +40,9 @@ export default class MassMedia extends React.PureComponent<{}, State> {
 
     public componentDidMount() {
         this.setState({
-            news: container.get<NewsInterface>(TYPES.News).getNews(4),
+            news: container
+                .get<NewsService>(TYPES.News)
+                .getNews(4),
         })
     }
 }
