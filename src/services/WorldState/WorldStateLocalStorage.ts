@@ -65,7 +65,7 @@ export default class WorldStateLocalStorage implements WorldState {
         return this.getStateDescription('externalOpinion')
     }
 
-    public setRefreshCallback(key: StateKey, callback: () => void) {
+    public addRefreshCallback(key: StateKey, callback: () => void) {
         callbacks[key] = callbacks[key] || []
         callbacks[key].push(callback)
     }

@@ -9,7 +9,7 @@ import GenericModal from './common/GenericModal'
 
 import container from '../../services'
 import TYPES from '../../services/types'
-import WorldState from '../../services/WorldState'
+import WorldState, { StateKey } from '../../services/WorldState'
 
 const peopleAvatar = require('../../assets/minister_people.png')
 const ratingAvatar = require('../../assets/minister_rating.png')
@@ -93,15 +93,31 @@ export default class Resources extends React.PureComponent<{}, State> {
     }
 
     public componentDidMount() {
-        const worldService = container.get<WorldState>(TYPES.WorldState)
+        const service = container.get<WorldState>(TYPES.WorldState)
 
-        this.setState({
-            moneyState: worldService.getMoney(),
-            peopleState: worldService.getPeople(),
-            ratingState: worldService.getInternalOpinion(),
-            diplomacyState: worldService.getInternalOpinion(),
-        })
+        service.addRefreshCallback(StateKey.MONEY, this.updateMoneyState)
+        service.addRefreshCallback(StateKey.PEOPLE, this.updatePeopleState)
+        service.addRefreshCallback(StateKey.INTERNAL_OPINION, this.updateRatingState)
+        service.addRefreshCallback(StateKey.EXTERNAL_OPINION, this.udpdateDiplomacyState)
+
+        this.updateMoneyState()
+        this.updatePeopleState()
+        this.updateRatingState()
+        this.udpdateDiplomacyState()
     }
+
+    private updateMoneyState = () => this.setState({
+        moneyState: container.get<WorldState>(TYPES.WorldState).getMoney(),
+    })
+    private updatePeopleState = () => this.setState({
+        peopleState: container.get<WorldState>(TYPES.WorldState).getPeople(),
+    })
+    private updateRatingState = () => this.setState({
+        ratingState: container.get<WorldState>(TYPES.WorldState).getInternalOpinion(),
+    })
+    private udpdateDiplomacyState = () => this.setState({
+        diplomacyState: container.get<WorldState>(TYPES.WorldState).getInternalOpinion(),
+    })
 
     private openMoneyModal = () => this.setState({ moneyIsOpen: true })
     private closeMoneyModal = () => this.setState({ moneyIsOpen: false })
