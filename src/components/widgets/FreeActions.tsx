@@ -88,6 +88,8 @@ export default class FreeActions extends React.PureComponent<{}, State> {
     }
 
     public componentDidMount() {
+        container.get<ActionsService>(TYPES.Actions).setCallback(this.updateActions)
+
         this.updateActions()
     }
 

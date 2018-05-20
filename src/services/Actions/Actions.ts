@@ -24,6 +24,7 @@ const actions = [
             })
         },
         slider: { min: 0, max: 20 },
+        used: false,
     },
     {
         title: 'А ты танцуй, девочка, танцуй',
@@ -44,6 +45,7 @@ const actions = [
                 externalOpinion: '+10',
             })
         },
+        used: false,
     },
     {
         title: 'Кураж-бомбей',
@@ -64,6 +66,7 @@ const actions = [
                 externalOpinion: '-10',
             })
         },
+        used: false,
     },
 ]
 
@@ -77,15 +80,17 @@ export default class Actions implements ActionsInterface {
     }
 
     public getActions() {
-        return actions.filter((action: Action) => action.used).map((action: Action) => {
-            return {
+        return actions
+            .filter((action: Action) => action.used)
+            .map((action: Action) => ({
                 ...action,
                 consequences: (state: WorldState, slider?: number) => {
                     action.consequences(state, slider)
                     action.used = true
-                    this.callback && this.callback()
+                    if (this.callback) {
+                        this.callback()
+                    }
                 },
-            }
-        })
+            }))
     }
 }

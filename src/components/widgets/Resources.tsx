@@ -28,7 +28,7 @@ interface State {
     diplomacyState: string,
 }
 
-export default class Resources extends React.PureComponent<{}, State> {
+export default class Resources extends React.Component<{}, State> {
 
     public state = {
         moneyIsOpen: false,
@@ -43,6 +43,7 @@ export default class Resources extends React.PureComponent<{}, State> {
     } as State
 
     public render() {
+
         return (
             <AppBar position="static" color="primary">
                 <Toolbar>
@@ -62,7 +63,7 @@ export default class Resources extends React.PureComponent<{}, State> {
                         open={this.state.moneyIsOpen}
                         closeModal={this.closeMoneyModal}
                     >
-                        <p>{this.state.diplomacyState}</p>
+                        <p>{this.state.moneyState}</p>
                     </GenericModal>
 
                     <GenericModal
