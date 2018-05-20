@@ -1,3 +1,4 @@
+import Action from '../../models/Action'
 import ActionsInterface from './index'
 
 import { injectable } from 'inversify'
@@ -54,7 +55,6 @@ const actions = [
               'Эврика! Худой - нам нужно больше Худых. "Зайчиков, объявите федеральный ' +
               'конкурс - нам нужно больше Худых!"',
 
-        // tslint:disable-next-line:ban-types
         consequences: (state: WorldState) => {
             state.applyChanges({
                 autocracy: '+10',
@@ -70,7 +70,21 @@ const actions = [
 @injectable()
 export default class Actions implements ActionsInterface {
 
+    private callback: () => void
+
+    public setCallback(callback: () => void) {
+        this.callback = callback
+    }
+
     public getActions() {
-        return actions
+        return actions.map((action: Action) => {
+            return {
+                ...action,
+                consequences: (state: WorldState, slider?: number) => {
+                    action.consequences(state, slider)
+                    this.callback()
+                },
+            }
+        })
     }
 }

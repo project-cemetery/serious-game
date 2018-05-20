@@ -41,8 +41,8 @@ const endScreen = {
                 деятельности подчиненных под контролем руководителя.`,
 
     liberalism: `Либеральный (несмешивающийся) стиль руководства характеризуется тем, что подчиненные имеют
-                свободу принимать собственные решения. Им предоставляется почти полная свобода
-                в определении своих целей и в контроле за своей работой.`,
+                 свободу принимать собственные решения. Им предоставляется почти полная свобода
+                 в определении своих целей и в контроле за своей работой.`,
 }
 
 const initialState = {
@@ -96,13 +96,13 @@ export default class WorldStateLocalStorage implements WorldState {
 
             switch (change[0]) {
                 case '=':
-                    state[key] = value
+                    state[key] = parseInt(value, 10)
                     break
                 case '+':
-                    state[key] += value
+                    state[key] = parseInt(state[key] || 0, 10) + parseInt(value, 10)
                     break
                 case '-':
-                    state[key] -= value
+                    state[key] = parseInt(state[key] || 0, 10) - parseInt(value, 10)
                     break
             }
         }
