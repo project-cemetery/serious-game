@@ -125,6 +125,6 @@ const events = [
 @injectable()
 export default class Events implements EventsInterface {
     public getNext() {
-        return events[0]
+        return events.shift()
     }
 }
