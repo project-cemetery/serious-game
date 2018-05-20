@@ -1,3 +1,10 @@
+export enum StateKey {
+    PEOPLE = 'people',
+    MONEY = 'money',
+    INTERNAL_OPTINION = 'internal_opinion',
+    EXTERNAL_OPINION = 'external_opinion',
+}
+
 export default interface WorldState {
 
     getPeople(): string
