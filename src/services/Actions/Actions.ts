@@ -77,12 +77,13 @@ export default class Actions implements ActionsInterface {
     }
 
     public getActions() {
-        return actions.map((action: Action) => {
+        return actions.filter((action: Action) => action.used).map((action: Action) => {
             return {
                 ...action,
                 consequences: (state: WorldState, slider?: number) => {
                     action.consequences(state, slider)
-                    this.callback()
+                    action.used = true
+                    this.callback && this.callback()
                 },
             }
         })
