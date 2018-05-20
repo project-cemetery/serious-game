@@ -4,6 +4,32 @@ import WorldState from './index'
 
 const STATE_KEY = 'STATE-'
 
+const badThreshold = 35
+const normalThreshold = 65
+
+const texts = {
+    money: {
+        bad: 'Всё плохо',
+        normal: 'Всё как всегда',
+        good: 'Путин - президент мира',
+    },
+    people: {
+        bad: 'Всё плохо',
+        normal: 'Всё как всегда',
+        good: 'Путин - президент мира',
+    },
+    internalOpinion: {
+        bad: 'Всё плохо',
+        normal: 'Всё как всегда',
+        good: 'Путин - президент мира',
+    },
+    externalOpinion: {
+        bad: 'Всё плохо',
+        normal: 'Всё как всегда',
+        good: 'Путин - президент мира',
+    },
+}
+
 const initialState = {
     money: 0,
     people: 0,
@@ -14,19 +40,19 @@ const initialState = {
 @injectable()
 export default class WorldStateLocalStorage implements WorldState {
     public getMoney() {
-       return this.getStateFieldFromStorage('money') || 0
+       return this.getStateDescription('money')
     }
 
     public getPeople() {
-        return this.getStateFieldFromStorage('people') || 0
+        return this.getStateDescription('people')
     }
 
     public getInternalOpinion() {
-        return this.getStateFieldFromStorage('internalOpinion') || 0
+        return this.getStateDescription('internalOpinion')
     }
 
     public getExternalOpinion() {
-        return this.getStateFieldFromStorage('externalOpinion') || 0
+        return this.getStateDescription('externalOpinion')
     }
 
     public getState() {
@@ -48,7 +74,18 @@ export default class WorldStateLocalStorage implements WorldState {
     }
 
     private getStateFieldFromStorage(key: string) {
-        return this.getState()[key]
+        return this.getState()[key] || 0
+    }
+
+    private getStateDescription(key: string) {
+        const state = this.getStateFieldFromStorage(key)
+        const text = texts[key]
+
+        return state <= badThreshold
+            ? text.bad
+            : state <= normalThreshold
+                ? text.normal
+                : text.good
     }
 
 }

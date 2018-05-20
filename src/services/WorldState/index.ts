@@ -1,9 +1,9 @@
 export default interface WorldState {
 
-    getPeople(): number
-    getMoney(): number
-    getInternalOpinion(): number
-    getExternalOpinion(): number
+    getPeople(): string
+    getMoney(): string
+    getInternalOpinion(): string
+    getExternalOpinion(): string
 
     // tslint:disable-next-line:ban-types
     getState(): Object
