@@ -1,8 +1,10 @@
+import WorldState from '../services/WorldState'
+
 export default interface Action {
     title: string
     description: string
     body: string
-    consequences: (v?: number) => void
+    consequences: (state: WorldState, slider?: number) => void
     slider?: Slider
 }
 

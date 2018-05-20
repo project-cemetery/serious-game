@@ -1,13 +1,8 @@
 import ActionsInterface from './index'
 
-import container from '../index'
-
 import { injectable } from 'inversify'
 
-import TYPES from '../types'
-import { WorldState } from '../WorldState'
-
-const worldState = container.get<WorldState>(TYPES.WorldState)
+import WorldState from '../WorldState'
 
 const actions = [
     {
@@ -20,9 +15,8 @@ const actions = [
               'Да так и сделаем, дам указание Зайчикову проработать ' +
               'повышение налогообложения по всем фронтам ради общего блага.',
 
-        // tslint:disable-next-line:ban-types
-        consequences: (slider: number) => {
-            worldState.applyChanges({
+        consequences: (state: WorldState, slider: number) => {
+            state.applyChanges({
                 autocracy: `+${slider}`,
                 money: `+${slider}`,
                 internalOpinion: '-10',
@@ -41,9 +35,8 @@ const actions = [
               '"Давай завязывать с этим," - сказал я ему. "Понял," - донеслось в ответ. - ' +
               '"Завтра же отменим принудительное лечение для всего населения".',
 
-        // tslint:disable-next-line:ban-types
-        consequences: (slider: number) => {
-            worldState.applyChanges({
+        consequences: (state: WorldState, slider: number) => {
+            state.applyChanges({
                 democracy: '+10',
                 money: '+10',
                 internalOpinion: '+10',
@@ -62,8 +55,8 @@ const actions = [
               'конкурс - нам нужно больше Худых!"',
 
         // tslint:disable-next-line:ban-types
-        consequences: () => {
-            worldState.applyChanges({
+        consequences: (state: WorldState) => {
+            state.applyChanges({
                 autocracy: '+10',
                 people: '-20',
                 money: '+10',

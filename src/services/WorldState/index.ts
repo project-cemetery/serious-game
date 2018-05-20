@@ -5,7 +5,7 @@ export enum StateKey {
     EXTERNAL_OPINION = 'external_opinion',
 }
 
-export interface WorldState {
+export default interface WorldState {
     getPeople(): string
     getMoney(): string
     getInternalOpinion(): string
@@ -20,5 +20,3 @@ export interface WorldState {
     // tslint:disable-next-line:ban-types
     setState(state: Object): void
 }
-
-export default WorldState

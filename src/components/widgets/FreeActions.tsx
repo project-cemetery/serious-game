@@ -16,6 +16,7 @@ import ActionModel from '../../models/Action'
 import container from '../../services'
 import ActionsService from '../../services/Actions'
 import TYPES from '../../services/types'
+import WorldState from '../../services/WorldState'
 import GenericModal from './common/GenericModal'
 
 interface State {
@@ -97,7 +98,10 @@ export default class FreeActions extends React.PureComponent<{}, State> {
         })
 
     private applyAction = () => this.state.activeAction &&
-        this.state.activeAction.consequences(this.state.actionStrength)
+        this.state.activeAction.consequences(
+            container.get<WorldState>(TYPES.WorldState),
+            this.state.actionStrength,
+        )
 
     private closeModal = () => this.setState({ actionIsOpen: false })
 
