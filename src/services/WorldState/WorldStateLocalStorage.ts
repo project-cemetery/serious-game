@@ -1,6 +1,6 @@
 import { injectable } from 'inversify'
 
-import WorldState from './WorldState'
+import WorldState from './index'
 
 const STATE_KEY = 'STATE-'
 

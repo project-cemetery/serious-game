@@ -9,5 +9,4 @@ export default interface WorldState {
     getState(): Object
     // tslint:disable-next-line:ban-types
     setState(state: Object): void
-
 }

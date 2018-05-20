@@ -1,10 +1,4 @@
-import Action from '../../models/Action'
-
-export interface ActionsInterface {
-
-    getActions(): Action[]
-
-}
+import ActionsInterface from './index'
 
 export default class Actions implements ActionsInterface {
     public getActions() {

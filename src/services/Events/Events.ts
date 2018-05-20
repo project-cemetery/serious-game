@@ -1,10 +1,4 @@
-import Event from '../../models/Event'
-
-export interface EventsInterface {
-
-    getNext(): Event
-
-}
+import EventsInterface from './index'
 
 export default class Events implements EventsInterface {
     public getNext() {
