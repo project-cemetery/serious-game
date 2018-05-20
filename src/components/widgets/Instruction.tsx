@@ -37,7 +37,7 @@ export default class Instruction extends React.Component<{}, State> {
 
     public componentDidMount() {
         this.setState({
-            report: container.get<StateService>(TYPES.WorldState).getEndScreen(),
+            report: container.get<StateService>(TYPES.WorldState).getStartScreen(),
         })
     }
 }

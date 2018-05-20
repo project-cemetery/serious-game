@@ -135,7 +135,7 @@ export default class Resources extends React.Component<{}, State> {
         ratingState: container.get<WorldState>(TYPES.WorldState).getInternalOpinion(),
     })
     private udpdateDiplomacyState = () => this.setState({
-        diplomacyState: container.get<WorldState>(TYPES.WorldState).getInternalOpinion(),
+        diplomacyState: container.get<WorldState>(TYPES.WorldState).getExternalOpinion(),
     })
 
     private openMoneyModal = () => this.setState({ moneyIsOpen: true })
