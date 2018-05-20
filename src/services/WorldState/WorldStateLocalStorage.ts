@@ -31,10 +31,10 @@ const texts = {
 }
 
 const initialState = {
-    money: 0,
-    people: 0,
-    internalOpinion: 0,
-    externalOpinion: 0,
+    money: 70,
+    people: 60,
+    internalOpinion: 50,
+    externalOpinion: 10,
 }
 
 const callbacks = {}
@@ -65,13 +65,38 @@ export default class WorldStateLocalStorage implements WorldState {
         return this.getStateDescription('externalOpinion')
     }
 
-    public getState() {
-        return localStorage.getItem(STATE_KEY) || initialState
-    }
-
     public setRefreshCallback(key: StateKey, callback: () => void) {
         callbacks[key] = callbacks[key] || []
         callbacks[key].push(callback)
+    }
+
+    // tslint:disable-next-line:ban-types
+    public applyChanges(patch: Object) {
+        const state = this.getState()
+
+        for (const key of Object.keys(patch)) {
+
+            const change = patch[key]
+            const value = change.substr(1)
+
+            switch (change[0]) {
+                case '=':
+                    state[key] = value
+                    break
+                case '+':
+                    state[key] += value
+                    break
+                case '-':
+                    state[key] -= value
+                    break
+            }
+        }
+
+        this.setState(state)
+    }
+
+    public getState() {
+        return JSON.parse(localStorage.getItem(STATE_KEY) || '{}') || initialState
     }
 
     // tslint:disable-next-line:ban-types

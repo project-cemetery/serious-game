@@ -2,7 +2,7 @@ export default interface Action {
     title: string
     description: string
     body: string
-    consequences: (v: number) => void
+    consequences: (v?: number) => void
     slider?: Slider
 }
 
