@@ -19,12 +19,16 @@ import TYPES from '../../services/types'
 import WorldState from '../../services/WorldState'
 import GenericModal from './common/GenericModal'
 
+const secretaryAvatar = require('../../assets/secretary.png')
 interface State {
     actions: ActionModel[]
 
     activeAction?: ActionModel
     actionIsOpen: boolean
     actionStrength: number
+
+    report: string,
+    reportIsOpen: boolean,
 }
 
 const styles = {
@@ -40,6 +44,8 @@ export default class FreeActions extends React.PureComponent<{}, State> {
         activeAction: undefined,
         actionIsOpen: false,
         actionStrength: 0,
+        report: '',
+        reportIsOpen: false,
     } as State
 
     public render() {
@@ -83,6 +89,17 @@ export default class FreeActions extends React.PureComponent<{}, State> {
                         }}>Применить</Button>
                     </GenericModal>
                 }
+
+                {this.state.report &&
+                    <GenericModal
+                        image={secretaryAvatar}
+                        title="Отчет"
+                        open={this.state.reportIsOpen}
+                        closeModal={this.closeReport}
+                    >
+                        <p>{this.state.report}</p>
+                    </GenericModal>
+                }
             </React.Fragment>
         )
     }
@@ -99,11 +116,19 @@ export default class FreeActions extends React.PureComponent<{}, State> {
             actionIsOpen: true,
         })
 
-    private applyAction = () => this.state.activeAction &&
-        this.state.activeAction.consequences(
-            container.get<WorldState>(TYPES.WorldState),
-            this.state.actionStrength,
-        )
+    private applyAction = () => {
+        if (this.state.activeAction) {
+            const report = this.state.activeAction.consequences(
+                container.get<WorldState>(TYPES.WorldState),
+                this.state.actionStrength,
+            )
+
+            this.setState({
+                report,
+                reportIsOpen: true,
+            })
+        }
+    }
 
     private closeModal = () => this.setState({ actionIsOpen: false })
 
@@ -113,4 +138,6 @@ export default class FreeActions extends React.PureComponent<{}, State> {
     private updateActions = () => this.setState({
         actions: container.get<ActionsService>(TYPES.Actions).getActions(),
     })
+
+    private closeReport = () => this.setState({ reportIsOpen: false })
 }

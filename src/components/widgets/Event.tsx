@@ -65,6 +65,7 @@ export default class Event extends React.PureComponent<{}, State> {
 
                 {this.state.event &&
                     <GenericModal
+                        image={this.state.event.image && require(`../../assets/${this.state.event.image}`)}
                         title={this.state.event.title}
                         open={this.state.modalIsOpen}
                     >
