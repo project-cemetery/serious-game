@@ -1,15 +1,15 @@
-import {Container} from 'inversify'
+import { Container } from 'inversify'
 
 import TYPES from './types'
 
-import Actions from './Actions/Actions'
 import ActionsInterface from './Actions'
+import Actions from './Actions/Actions'
 
-import Events from './Events/Events'
 import EventsInterface from './Events'
+import Events from './Events/Events'
 
-import WorldStateLocalStorage from './WorldState/WorldStateLocalStorage'
 import WoldState from './WorldState'
+import WorldStateLocalStorage from './WorldState/WorldStateLocalStorage'
 
 const container = new Container()
 

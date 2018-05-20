@@ -1,6 +1,6 @@
-import Event from "../../models/Event";
+import Event from '../../models/Event'
 
-export interface EventsInterface {
+export default interface EventsInterface {
 
     getNext(): Event
 

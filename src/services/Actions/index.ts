@@ -1,4 +1,4 @@
-import Action from "../../models/Action";
+import Action from '../../models/Action'
 
 export default interface ActionsInterface {
 
