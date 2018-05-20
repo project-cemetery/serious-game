@@ -16,7 +16,7 @@ const secretaryAvatar = require('../../assets/secretary.png')
 export default class Instruction extends React.Component<{}, State> {
 
     public state = {
-        open: false,
+        open: true,
         report: undefined,
     } as State
 
