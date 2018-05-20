@@ -19,7 +19,7 @@ const secretaryAvatar = require('../../assets/secretary.png')
 interface State {
     event?: EventModel
     modalIsOpen: boolean
-    endText: string
+    endText?: any
     gameOver: boolean
 
     report: string,
@@ -49,7 +49,7 @@ export default class Event extends React.PureComponent<{}, State> {
         report: '',
         reportIsOpen: false,
 
-        endText: '',
+        endText: undefined,
         gameOver: false,
     } as State
 
@@ -99,7 +99,7 @@ export default class Event extends React.PureComponent<{}, State> {
 
                 {this.state.endText && this.state.gameOver &&
                     <GenericModal title="Игра закончена" open={this.state.gameOver}>
-                        <p>{this.state.endText}</p>
+                        {this.state.endText}
                     </GenericModal>
                 }
             </React.Fragment>

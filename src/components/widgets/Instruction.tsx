@@ -28,7 +28,7 @@ export default class Instruction extends React.Component<{}, State> {
                 open={this.state.open}
                 closeModal={() => this.setState({ open: false })}
             >
-                <p>{this.state.report}</p>
+                {this.state.report}
 
                 {this.state.open && <SecretaryAudio />}
             </GenericModal>

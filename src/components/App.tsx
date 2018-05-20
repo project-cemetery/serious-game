@@ -7,6 +7,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 import Audio from './common/Audio'
 import Event from './widgets/Event'
 import FreeActions from './widgets/FreeActions'
+import Instruction from './widgets/Instruction'
 import MassMedia from './widgets/MassMedia'
 import Reports from './widgets/Reports'
 import Resources from './widgets/Resources'
@@ -43,6 +44,7 @@ class App extends React.Component {
                     <div />
                     <Reports />
                 </div>
+                <Instruction />
                 <Audio audio={bgAudio} loop />
             </MuiThemeProvider>
         )

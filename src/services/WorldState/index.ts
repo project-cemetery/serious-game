@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export enum StateKey {
     PEOPLE = 'people',
     MONEY = 'money',
@@ -13,8 +15,8 @@ export default interface WorldState {
 
     addRefreshCallback(key: StateKey, callback: () => void): void
 
-    getStartScreen(): string
-    getEndScreen(): string
+    getStartScreen(): ReactNode | string
+    getEndScreen(): ReactNode | string
 
     // tslint:disable-next-line:ban-types
     applyChanges(patch: Object): void

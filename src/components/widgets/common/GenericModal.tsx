@@ -31,7 +31,7 @@ export default class GenericModal extends React.Component<Props, {}> {
         return (
             <Modal
                 disableAutoFocus
-                style={{ width: '60vw', height: '60vh', top: '15vh', left: '20vw' }}
+                style={{ width: '70vw', height: '60vh', top: '15vh', left: '20vw' }}
                 open={this.props.open}
                 onClose={this.handleClose}
             >
