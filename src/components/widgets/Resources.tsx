@@ -11,8 +11,10 @@ import container from '../../services'
 import TYPES from '../../services/types'
 import WorldState, { StateKey } from '../../services/WorldState'
 
+const moneyAvatar = require('../../assets/minister_money.png')
 const peopleAvatar = require('../../assets/minister_people.png')
 const ratingAvatar = require('../../assets/minister_rating.png')
+const diplomacyAvatar = require('../../assets/minister_diplomacy.png')
 
 interface State {
     moneyIsOpen: boolean
@@ -55,6 +57,7 @@ export default class Resources extends React.PureComponent<{}, State> {
 
                 <React.Fragment>
                     <GenericModal
+                        image={moneyAvatar}
                         title="Министр финансов"
                         open={this.state.moneyIsOpen}
                         closeModal={this.closeMoneyModal}
@@ -81,6 +84,7 @@ export default class Resources extends React.PureComponent<{}, State> {
                     </GenericModal>
 
                     <GenericModal
+                        image={diplomacyAvatar}
                         title="Министр иностранных дел"
                         open={this.state.diplomacyIsOpen}
                         closeModal={this.closeDiplomacyModal}
