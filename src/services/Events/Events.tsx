@@ -17,8 +17,8 @@ const events = [
             </React.Fragment>,
         options: [
             {
-                title: 'Автоматизация',
-                description: 'Грохнуть весь народ. И закупить роботов из Гермазии.',
+                title: 'Автоматизировать',
+                description: 'Вместо слабых человеков будем использовать машины',
                 consequences: (state: WorldState) => {
                     state.applyChanges({
                         autocracy: '+20',
@@ -32,8 +32,8 @@ const events = [
                 },
             },
             {
-                title: 'Сохранение народа',
-                description: 'Согнать все население в Северные районы, раздать каждому по ключу, и поставить охранников по периметру.',
+                title: 'Построить трудовые лагеря',
+                description: 'Согнать все население в Северные районы, раздать каждому по гавчному ключу, и поставить охрану',
                 consequences: (state: WorldState) => {
                     state.applyChanges({
                         autocracy: '+10',
@@ -47,8 +47,8 @@ const events = [
                 },
             },
             {
-                title: 'Перераспределение средств',
-                description: 'Раздать бабло людям.',
+                title: 'Больше платить',
+                description: 'Повысить зарплаты',
                 consequences: (state: WorldState) => {
                     state.applyChanges({
                         democracy: '+10',
@@ -63,7 +63,7 @@ const events = [
             },
             {
                 title: 'Оставить все как есть',
-                description: 'Забухать.',
+                description: 'Забухать',
                 consequences: (state: WorldState) => {
                     state.applyChanges({
                         liberalism: '+10',
@@ -85,8 +85,8 @@ const events = [
         `,
         options: [
             {
-                title: 'Наказать',
-                description: 'Заставить Волкова продать дом для уточки и купить ей нормальный коттедж.',
+                title: 'Похвалить',
+                description: 'Заставить Волкова продать дом для уточки и купить ей нормальный коттедж',
                 consequences: (state: WorldState) => {
                     state.applyChanges({
                         autocracy: '+15',
@@ -99,8 +99,8 @@ const events = [
                 },
             },
             {
-                title: 'Простить',
-                description: 'Простить Волкова и дать ему возможность пристрелить эту утку.',
+                title: 'Наказать',
+                description: 'Попросить Волкова больше так не делать и дать ему возможность пристрелить эту утку',
                 consequences: (state: WorldState) => {
                     state.applyChanges({
                         liberalism: '+10',
