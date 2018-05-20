@@ -4,6 +4,7 @@ import { css } from 'emotion'
 
 import { MuiThemeProvider } from '@material-ui/core/styles'
 
+import Audio from './common/Audio'
 import Event from './widgets/Event'
 import FreeActions from './widgets/FreeActions'
 import MassMedia from './widgets/MassMedia'
@@ -11,6 +12,8 @@ import Reports from './widgets/Reports'
 import Resources from './widgets/Resources'
 
 import theme from './theme'
+
+const bgAudio = require('../assets/bg.mp3')
 
 const styles = {
     container: css`
@@ -40,6 +43,7 @@ class App extends React.Component {
                     <div />
                     <Reports />
                 </div>
+                <Audio audio={bgAudio} />
             </MuiThemeProvider>
         )
     }
