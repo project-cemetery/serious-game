@@ -1,8 +1,8 @@
 export default interface Action {
     title: string
     description: string
-    // tslint:disable-next-line:ban-types
-    consequences: Function
+    body: string
+    consequences: (v: number) => void
     slider?: Slider
 }
 

@@ -6,47 +6,65 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ListSubheader from '@material-ui/core/ListSubheader'
 import Paper from '@material-ui/core/Paper'
 
+import ActionModel from '../../models/Action'
+import container from '../../services'
+import ActionsService from '../../services/Actions'
+import TYPES from '../../services/types'
+import GenericModal from './common/GenericModal'
+
 interface State {
-    actions: any[]
+    actions: ActionModel[]
+
+    activeAction?: ActionModel
+    actionIsOpen: boolean
 }
 
 export default class FreeActions extends React.PureComponent<{}, State> {
 
     public state = {
         actions: [],
+        activeAction: undefined,
+        actionIsOpen: false,
     } as State
 
     public render() {
-        const { actions } = this.state
-
-        // tslint:disable-next-line:no-console
-        console.log(actions)
-
         return (
-            <Paper style={{ opacity: 0.9 }}>
-                <List subheader={
-                    <ListSubheader>Действия</ListSubheader>
-                }>
-                    <ListItem button>
-                        <ListItemText primary="Законы" secondary="Издать репрессивный закон" />
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemText primary="Налоги" secondary="Снизить налоги" />
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemText primary="Подчиненные" secondary="Устроить ротацию губернаторов" />
-                    </ListItem>
-                </List>
-            </Paper>
+            <React.Fragment>
+
+                <Paper style={{ opacity: 0.9 }}>
+                    <List subheader={<ListSubheader>Действия</ListSubheader>}>
+                        {this.state.actions.map((action) =>
+                            <ListItem button onClick={this.activateAction(action)}>
+                                <ListItemText primary={action.title} secondary={action.description} />
+                            </ListItem>,
+                        )}
+                    </List>
+                </Paper>
+
+                {this.state.activeAction &&
+                    <GenericModal
+                        title={this.state.activeAction.title}
+                        open={this.state.actionIsOpen}
+                        closeModal={this.closeModal}
+                    >
+                        <p>{this.state.activeAction.body}</p>
+                    </GenericModal>
+                }
+            </React.Fragment>
         )
     }
 
     public componentDidMount() {
         this.setState({
-            actions: [
-                { name: 'ok' },
-            ],
+            actions: container.get<ActionsService>(TYPES.Actions).getActions(),
         })
     }
 
+    private activateAction = (action: ActionModel) =>
+        () => this.setState({
+            activeAction: action,
+            actionIsOpen: true,
+        })
+
+    private closeModal = () => this.setState({ actionIsOpen: false })
 }
