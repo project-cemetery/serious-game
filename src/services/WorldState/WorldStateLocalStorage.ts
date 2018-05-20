@@ -1,6 +1,6 @@
 import { injectable } from 'inversify'
 
-import WorldState from './index'
+import WorldState, { StateKey } from './index'
 
 const STATE_KEY = 'STATE-'
 
@@ -37,6 +37,8 @@ const initialState = {
     externalOpinion: 0,
 }
 
+const callbacks = {}
+
 @injectable()
 export default class WorldStateLocalStorage implements WorldState {
     public constructor() {
@@ -67,11 +69,22 @@ export default class WorldStateLocalStorage implements WorldState {
         return localStorage.getItem(STATE_KEY) || initialState
     }
 
+    public setRefreshCallback(key: StateKey, callback: () => void) {
+        callbacks[key] = callbacks[key] || []
+        callbacks[key].push(callback)
+    }
+
     // tslint:disable-next-line:ban-types
     public setState(state: Object) {
         const oldState = this.getState()
 
         localStorage.setItem(STATE_KEY, JSON.stringify(Object.assign({}, oldState, state)))
+
+        for (const key in state) {
+            if (state[key] !== oldState[key] && callbacks[key]) {
+                callbacks[key].forEach((x: () => void) => x())
+            }
+        }
     }
 
     private getStateFieldFromStorage(key: string) {

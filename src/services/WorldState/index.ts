@@ -6,11 +6,12 @@ export enum StateKey {
 }
 
 export default interface WorldState {
-
     getPeople(): string
     getMoney(): string
     getInternalOpinion(): string
     getExternalOpinion(): string
+
+    setRefreshCallback(key: StateKey, callback: () => void): void
 
     // tslint:disable-next-line:ban-types
     getState(): Object
