@@ -29,7 +29,7 @@ export default class MassMedia extends React.PureComponent<{}, State> {
                     <ListSubheader component="div">Новости</ListSubheader>
                 }>
                     {this.state.news.map((newItem) =>
-                        <ListItem>
+                        <ListItem key={newItem.title}>
                             <ListItemText primary={newItem.title} secondary={newItem.text} />
                         </ListItem>,
                     )}

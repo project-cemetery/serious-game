@@ -16,7 +16,7 @@ const actions = [
             mollit anim id est laborum.
         `,
         // tslint:disable-next-line:no-console
-        consequences: (v: number) => console.log('РЕШЕНО!'),
+        consequences: (v: number) => console.log(`РЕШЕНО! ${v}`),
         slider: { min: 0, max: 10 },
     },
 ]
