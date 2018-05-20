@@ -1,3 +1,5 @@
+import WorldState from '../services/WorldState'
+
 export default interface Event {
     title: string
     description: string
@@ -7,5 +9,5 @@ export default interface Event {
 export interface Option {
     title: string
     description: string
-    consequences: () => void
+    consequences: (state: WorldState) => string
 }

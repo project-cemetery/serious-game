@@ -11,10 +11,14 @@ import EventModel, { Option as OptionModel } from '../../models/Event'
 import container from '../../services'
 import EventsService from '../../services/Events'
 import TYPES from '../../services/types'
+import WorldState from '../../services/WorldState'
 
 interface State {
     event?: EventModel
     modalIsOpen: boolean
+
+    report: string,
+    reportIsOpen: boolean,
 }
 
 const styles = {
@@ -36,6 +40,9 @@ export default class Event extends React.PureComponent<{}, State> {
     public state = {
         event: undefined,
         modalIsOpen: false,
+
+        report: '',
+        reportIsOpen: false,
     } as State
 
     public render() {
@@ -67,6 +74,12 @@ export default class Event extends React.PureComponent<{}, State> {
                         </footer>
                     </GenericModal>
                 }
+
+                {this.state.report &&
+                    <GenericModal title="Отчет" open={this.state.reportIsOpen} closeModal={this.closeReport}>
+                        <p>{this.state.report}</p>
+                    </GenericModal>
+                }
             </React.Fragment>
         )
     }
@@ -82,6 +95,14 @@ export default class Event extends React.PureComponent<{}, State> {
         () => {
             this.setState({ modalIsOpen: false })
 
-            option.consequences()
+            const report = option.consequences(container.get<WorldState>(TYPES.WorldState))
+
+            this.setState({
+                report,
+                reportIsOpen: true,
+            })
         }
+
+    private closeReport = () => this.setState({ reportIsOpen: false })
+
 }
