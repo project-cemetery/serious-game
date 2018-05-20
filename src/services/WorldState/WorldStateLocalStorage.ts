@@ -117,6 +117,8 @@ export default class WorldStateLocalStorage implements WorldState {
 
         const maxAttribute = Math.max.apply(rulingStyles.map((x: string) => state[x]))
 
+        localStorage.clear()
+
         return (endScreen[rulingStyles.find((x: string) => !state[x] === maxAttribute) || 'autocracy']) as string
     }
 

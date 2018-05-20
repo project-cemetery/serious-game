@@ -13,6 +13,8 @@ import EventsService from '../../services/Events'
 import TYPES from '../../services/types'
 import WorldState from '../../services/WorldState'
 
+const secretaryAvatar = require('../../assets/secretary.png')
+
 interface State {
     event?: EventModel
     modalIsOpen: boolean
@@ -81,7 +83,12 @@ export default class Event extends React.PureComponent<{}, State> {
                 }
 
                 {this.state.report &&
-                    <GenericModal title="Отчет" open={this.state.reportIsOpen} closeModal={this.closeReport}>
+                    <GenericModal
+                        image={secretaryAvatar}
+                        title="Отчет"
+                        open={this.state.reportIsOpen}
+                        closeModal={this.closeReport}
+                    >
                         <p>{this.state.report}</p>
                     </GenericModal>
                 }
