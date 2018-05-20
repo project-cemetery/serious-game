@@ -10,7 +10,6 @@ const events = [
             // tslint:disable-next-line:ban-types
             { title: 'Опция 2', description: 'Описание', consequences: (state: Object) => state },
         ],
-
     },
 ]
 
