@@ -30,6 +30,21 @@ const texts = {
     },
 }
 
+const endScreen = {
+    'autocracy': `Автократический стиль управления менеджмента Автократический стиль характеризуется высокой 
+                  степенью централизации власти руководителя. Это директивный стиль, означающий большую свободу 
+                  руководителя в выборе средств воздействия при слабом контроле.`,
+
+    'democracy': `Демократический стиль руководства Демократический стиль характеризуется предоставлением 
+                  подчиненным самостоятельности в пределах выполняемых ими функций и их квалификации. 
+                  Это коллегиальный стиль, который дает большую свободу 
+                  деятельности подчиненных под контролем руководителя.`,
+
+    'liberalism': `Либеральный (несмешивающийся) стиль руководства характеризуется тем, что подчиненные имеют 
+                   свободу принимать собственные решения. Им предоставляется почти полная свобода 
+                   в определении своих целей и в контроле за своей работой.`
+}
+
 const initialState = {
     money: 70,
     people: 60,
@@ -93,6 +108,16 @@ export default class WorldStateLocalStorage implements WorldState {
         }
 
         this.setState(state)
+    }
+
+    public getEndScreen() {
+        const state = getState()
+
+        const rulingStyles = ['autocracy', 'democracy', 'liberalism']
+
+        const maxAttribute = Math.max.apply(rulingStyles.map((x: string) => state[x]))
+
+        return endScreen[rulingStyles.find((x: string) => state[x] === maxAttribute)]
     }
 
     public getState() {

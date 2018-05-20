@@ -13,6 +13,8 @@ export default interface WorldState {
 
     addRefreshCallback(key: StateKey, callback: () => void): void
 
+    getEndScreen(): string
+
     // tslint:disable-next-line:ban-types
     applyChanges(patch: Object): void
     // tslint:disable-next-line:ban-types
