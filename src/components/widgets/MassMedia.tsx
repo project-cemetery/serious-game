@@ -6,34 +6,41 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ListSubheader from '@material-ui/core/ListSubheader'
 import Paper from '@material-ui/core/Paper'
 
-export default class MassMedia extends React.PureComponent<{}, {}> {
+import NewsModel from '../../models/News'
+import container from '../../services'
+import NewsInterface from '../../services/News'
+import TYPES from '../../services/types'
+
+interface State {
+    news: NewsModel[]
+}
+
+export default class MassMedia extends React.PureComponent<{}, State> {
+
+    public state = {
+        news: [],
+    } as State
 
     public render() {
+
         return (
             <Paper style={{ opacity: 0.9 }}>
                 <List subheader={
                     <ListSubheader component="div">Новости</ListSubheader>
                 }>
-                    <ListItem>
-                        <ListItemText
-                            primary="РБК"
-                            secondary="Полный состав нового российского правительства"
-                        />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemText
-                            primary="Meduza"
-                            secondary="В Москве прошел учредительный съезд партии Навального"
-                        />
-                    </ListItem>
-                    <ListItem>
-                        <ListItemText
-                            primary="RT на русском"
-                            secondary="Абэ выразил надежду на достижение прогресса в заключении мирного договора с РФ"
-                        />
-                    </ListItem>
+                    {this.state.news.map((newItem) =>
+                        <ListItem>
+                            <ListItemText primary={newItem.title} secondary={newItem.text} />
+                        </ListItem>,
+                    )}
                 </List>
             </Paper>
         )
+    }
+
+    public componentDidMount() {
+        this.setState({
+            news: container.get<NewsInterface>(TYPES.News).getNews(4),
+        })
     }
 }
