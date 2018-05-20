@@ -81,7 +81,7 @@ export default class Actions implements ActionsInterface {
 
     public getActions() {
         return actions
-            .filter((action: Action) => action.used)
+            .filter((action: Action) => !action.used)
             .map((action: Action) => ({
                 ...action,
                 consequences: (state: WorldState, slider?: number) => {
