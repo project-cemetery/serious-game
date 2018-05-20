@@ -16,6 +16,8 @@ import WorldState from '../../services/WorldState'
 interface State {
     event?: EventModel
     modalIsOpen: boolean
+    endText: string
+    gameOver: boolean
 
     report: string,
     reportIsOpen: boolean,
@@ -43,6 +45,9 @@ export default class Event extends React.PureComponent<{}, State> {
 
         report: '',
         reportIsOpen: false,
+
+        endText: '',
+        gameOver: false,
     } as State
 
     public render() {
@@ -80,15 +85,30 @@ export default class Event extends React.PureComponent<{}, State> {
                         <p>{this.state.report}</p>
                     </GenericModal>
                 }
+
+                {this.state.endText && this.state.gameOver &&
+                    <GenericModal title="Игра закончена" open={this.state.gameOver}>
+                        <p>{this.state.endText}</p>
+                    </GenericModal>
+                }
             </React.Fragment>
         )
     }
 
     private handleNexWeek = () => {
+        const event = container.get<EventsService>(TYPES.Events).getNext()
+
         this.setState({
-            event: container.get<EventsService>(TYPES.Events).getNext(),
+            event,
             modalIsOpen: true,
         })
+
+        if (!event) {
+            this.setState({
+                endText: container.get<WorldState>(TYPES.WorldState).getEndScreen(),
+                gameOver: true,
+            })
+        }
     }
 
     private handleDecision = (option: OptionModel) =>
