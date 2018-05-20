@@ -7,7 +7,7 @@ export default class Reports extends React.PureComponent<{}, {}> {
     public render() {
         return (
             <React.Fragment>
-                <Button variant="raised" color="primary">
+                <Button variant="raised" color="primary" disabled>
                     Архив отчетов
                 </Button>
             </React.Fragment>

@@ -18,6 +18,7 @@ import ActionsService from '../../services/Actions'
 import TYPES from '../../services/types'
 import WorldState from '../../services/WorldState'
 import GenericModal from './common/GenericModal'
+import SecretaryAudio from './common/SecretaryAudio'
 
 const secretaryAvatar = require('../../assets/secretary.png')
 interface State {
@@ -98,6 +99,8 @@ export default class FreeActions extends React.PureComponent<{}, State> {
                         closeModal={this.closeReport}
                     >
                         <p>{this.state.report}</p>
+
+                        {this.state.reportIsOpen && <SecretaryAudio />}
                     </GenericModal>
                 }
             </React.Fragment>

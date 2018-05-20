@@ -43,7 +43,7 @@ class App extends React.Component {
                     <div />
                     <Reports />
                 </div>
-                <Audio audio={bgAudio} />
+                <Audio audio={bgAudio} loop />
             </MuiThemeProvider>
         )
     }

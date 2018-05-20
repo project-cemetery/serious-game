@@ -12,6 +12,7 @@ import container from '../../services'
 import EventsService from '../../services/Events'
 import TYPES from '../../services/types'
 import WorldState from '../../services/WorldState'
+import SecretaryAudio from './common/SecretaryAudio'
 
 const secretaryAvatar = require('../../assets/secretary.png')
 
@@ -91,6 +92,8 @@ export default class Event extends React.PureComponent<{}, State> {
                         closeModal={this.closeReport}
                     >
                         <p>{this.state.report}</p>
+
+                        {this.state.reportIsOpen && <SecretaryAudio />}
                     </GenericModal>
                 }
 

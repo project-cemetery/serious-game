@@ -2,6 +2,7 @@ import * as React from 'react'
 
 interface Props {
     audio: string
+    loop?: boolean
 }
 
 export default class Music extends React.Component<Props, {}> {
@@ -21,6 +22,10 @@ export default class Music extends React.Component<Props, {}> {
     public componentDidMount() {
         this.audio.play()
 
-        this.audio.loop = true
+        this.audio.loop = !!this.props.loop
+    }
+
+    public componentWillUnmount() {
+        this.audio.pause()
     }
 }
