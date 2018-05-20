@@ -1,7 +1,6 @@
 import * as React from 'react'
 
 import { css } from 'emotion'
-import * as Sound from 'react-sound'
 
 import { MuiThemeProvider } from '@material-ui/core/styles'
 
@@ -41,15 +40,6 @@ class App extends React.Component {
                     <div />
                     <Reports />
                 </div>
-
-                <Sound
-                    url="cool_sound.mp3"
-                    playStatus={Sound.status.PLAYING}
-                    playFromPosition={300 /* in milliseconds */}
-                    onLoading={this.handleSongLoading}
-                    onPlaying={this.handleSongPlaying}
-                    onFinishedPlaying={this.handleSongFinishedPlaying}
-                />
             </MuiThemeProvider>
         )
     }
