@@ -59,10 +59,10 @@ export default class WorldStateLocalStorage implements WorldState {
         const state = localStorage.getItem(STATE_KEY)
 
         if (state) {
+            return state
+        } else {
             this.setState(initialState)
             return initialState as any // TODO: fix it!
-        } else {
-            return state
         }
     }
 
