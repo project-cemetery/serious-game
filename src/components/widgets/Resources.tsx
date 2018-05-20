@@ -5,11 +5,17 @@ import Button from '@material-ui/core/Button'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 
+import Audio from '../common/Audio'
 import GenericModal from './common/GenericModal'
 
 import container from '../../services'
 import TYPES from '../../services/types'
 import WorldState, { StateKey } from '../../services/WorldState'
+
+const moneyAudio = require('../../assets/money.ogg')
+const peopleAudio = require('../../assets/people.ogg')
+const ratingAudio = require('../../assets/rating.ogg')
+const diplomacyAudio = require('../../assets/diplomacy.ogg')
 
 const moneyAvatar = require('../../assets/minister_money.png')
 const peopleAvatar = require('../../assets/minister_people.png')
@@ -64,6 +70,8 @@ export default class Resources extends React.Component<{}, State> {
                         closeModal={this.closeMoneyModal}
                     >
                         <p>{this.state.moneyState}</p>
+
+                        {this.state.moneyIsOpen && <Audio audio={moneyAudio} /> }
                     </GenericModal>
 
                     <GenericModal
@@ -73,6 +81,8 @@ export default class Resources extends React.Component<{}, State> {
                         closeModal={this.closePeopleModal}
                     >
                         <p>{this.state.peopleState}</p>
+
+                        {this.state.peopleIsOpen && <Audio audio={peopleAudio} /> }
                     </GenericModal>
 
                     <GenericModal
@@ -82,6 +92,8 @@ export default class Resources extends React.Component<{}, State> {
                         closeModal={this.closeRatingModal}
                     >
                         <p>{this.state.ratingState}</p>
+
+                        {this.state.ratingIsOpen && <Audio audio={ratingAudio} /> }
                     </GenericModal>
 
                     <GenericModal
@@ -91,6 +103,8 @@ export default class Resources extends React.Component<{}, State> {
                         closeModal={this.closeDiplomacyModal}
                     >
                         <p>{this.state.diplomacyState}</p>
+
+                        {this.state.diplomacyIsOpen && <Audio audio={diplomacyAudio} /> }
                     </GenericModal>
                 </React.Fragment>
             </AppBar>
