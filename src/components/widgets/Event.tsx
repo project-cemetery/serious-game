@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import Button from '@material-ui/core/Button'
+import Tooltip from '@material-ui/core/Tooltip'
 
 import { css } from 'emotion'
 
@@ -57,12 +58,11 @@ export default class Event extends React.PureComponent<{}, State> {
 
                         <footer className={styles.footer}>
                             {this.state.event.options.map((option) =>
-                                <Button
-                                    variant="outlined"
-                                    onClick={this.handleDecision(option)}
-                                >
-                                    {option.title}
-                                </Button>,
+                                <Tooltip key={option.title} title={option.description}>
+                                    <Button variant="outlined" onClick={this.handleDecision(option)}>
+                                        {option.title}
+                                    </Button>
+                                </Tooltip>,
                             )}
                         </footer>
                     </GenericModal>
