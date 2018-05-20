@@ -65,6 +65,9 @@ export default class FreeActions extends React.PureComponent<{}, State> {
 
                         {this.state.activeAction.slider &&
                             <Slider
+                                trackStyle={{ backgroundColor: '#7f0000' }}
+                                railStyle={{ backgroundColor: '#f05545' }}
+                                handleStyle={{ backgroundColor: '#484848', borderColor: '#000' }}
                                 min={this.state.activeAction.slider.min}
                                 max={this.state.activeAction.slider.max}
                                 defaultValue={0}

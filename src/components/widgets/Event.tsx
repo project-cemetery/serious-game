@@ -6,15 +6,23 @@ import { css } from 'emotion'
 
 import GenericModal from './common/GenericModal'
 
+import EventModel, { Option as OptionModel } from '../../models/Event'
+import container from '../../services'
+import EventsService from '../../services/Events'
+import TYPES from '../../services/types'
+
 interface State {
+    event?: EventModel
     modalIsOpen: boolean
 }
 
 const styles = {
     footer: css`
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-column-gap: 2rem;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-column-gap: 1rem;
+        grid-row-gap: 1rem;
 
         width: calc(100% - 4rem);
         position: absolute;
@@ -25,6 +33,7 @@ const styles = {
 export default class Event extends React.PureComponent<{}, State> {
 
     public state = {
+        event: undefined,
         modalIsOpen: false,
     } as State
 
@@ -39,48 +48,40 @@ export default class Event extends React.PureComponent<{}, State> {
                     Завершить неделю
                 </Button>
 
-                <GenericModal
-                    title="jkj"
-                    open={this.state.modalIsOpen}
-                >
+                {this.state.event &&
+                    <GenericModal
+                        title={this.state.event.title}
+                        open={this.state.modalIsOpen}
+                    >
+                        <p>{this.state.event.description}</p>
 
-                    <footer className={styles.footer}>
-                        <Button
-                            variant="outlined"
-                            // tslint:disable-next-line:no-console
-                            onClick={this.handleDecision(() => console.log('ok'))
-                        }>
-                            Решить первым образом
-                        </Button>
-                        <Button
-                            variant="outlined"
-                            // tslint:disable-next-line:no-console
-                            onClick={this.handleDecision(() => console.log('ok'))
-                        }>
-                            Решить вторым образом
-                        </Button>
-                        <Button
-                            variant="outlined"
-                            // tslint:disable-next-line:no-console
-                            onClick={this.handleDecision(() => console.log('ok'))
-                        }>
-                            Решить третьим образом
-                        </Button>
-                    </footer>
-                </GenericModal>
+                        <footer className={styles.footer}>
+                            {this.state.event.options.map((option) =>
+                                <Button
+                                    variant="outlined"
+                                    onClick={this.handleDecision(option)}
+                                >
+                                    {option.title}
+                                </Button>,
+                            )}
+                        </footer>
+                    </GenericModal>
+                }
             </React.Fragment>
         )
     }
 
     private handleNexWeek = () => {
-        // get new event
-
-        this.setState({ modalIsOpen: true })
+        this.setState({
+            event: container.get<EventsService>(TYPES.Events).getNext(),
+            modalIsOpen: true,
+        })
     }
 
-    private handleDecision = (eventResolve: () => void) => () => {
-        this.setState({ modalIsOpen: false })
+    private handleDecision = (option: OptionModel) =>
+        () => {
+            this.setState({ modalIsOpen: false })
 
-        eventResolve()
-    }
+            option.consequences()
+        }
 }
