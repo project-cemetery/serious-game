@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 
-import GenericModal from './resources/GenericModal'
+import GenericModal from './common/GenericModal'
 
 interface State {
     moneyIsOpen: boolean
