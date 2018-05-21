@@ -24,7 +24,7 @@ export default class Instruction extends React.Component<{}, State> {
         return (
             <GenericModal
                 image={secretaryAvatar}
-                title="Севренее Кореи"
+                title="Севернее Кореи"
                 open={this.state.open}
                 closeModal={() => this.setState({ open: false })}
             >
