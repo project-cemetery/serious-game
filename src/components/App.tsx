@@ -2,8 +2,6 @@ import * as React from 'react'
 
 import { css } from 'emotion'
 
-import { MuiThemeProvider } from '@material-ui/core/styles'
-
 import Audio from './common/Audio'
 import Event from './widgets/Event'
 import FreeActions from './widgets/FreeActions'
@@ -11,8 +9,6 @@ import Instruction from './widgets/Instruction'
 import MassMedia from './widgets/MassMedia'
 import Reports from './widgets/Reports'
 import Resources from './widgets/Resources'
-
-import theme from './theme'
 
 const bgAudio = require('../assets/bg.mp3')
 
@@ -33,7 +29,7 @@ class App extends React.Component {
     public render() {
 
         return (
-            <MuiThemeProvider theme={theme}>
+            <React.Fragment>
                 <Resources />
                 <div className={styles.container}>
                     <FreeActions />
@@ -46,7 +42,7 @@ class App extends React.Component {
                 </div>
                 <Instruction />
                 <Audio audio={bgAudio} loop />
-            </MuiThemeProvider>
+            </React.Fragment>
         )
     }
 

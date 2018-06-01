@@ -10,7 +10,11 @@
     "rc-slider": "^8.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
     "react-scripts-ts": "2.16.0",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.3.2",
+    "redux-thunk": "^2.3.0",
     "reflect-metadata": "^0.1.12"
   },
   "scripts": {
@@ -25,6 +29,8 @@
     "@types/rc-slider": "^8.2.3",
     "@types/react": "^16.3.14",
     "@types/react-dom": "^16.0.5",
+    "@types/react-redux": "^6.0.0",
+    "@types/redux-actions": "^2.3.0",
     "typescript": "^2.8.3"
   }
 }
