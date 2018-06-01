@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import briefReducers, { BriefState } from './store/brief/reducers'
-import modalReducers, { ModalState } from './store/modal/reducers'
+import briefReducers, { BriefState } from '@app/store/brief/reducers'
+import modalReducers, { ModalState } from '@app/store/modal/reducers'
 
 export interface AppState {
     brief: BriefState

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import ModalRoot from './modal/ModalRoot'
+import ModalRoot from '@app/components/modal/ModalRoot'
 
 import Container from './GameContainer'
 

@@ -7,9 +7,9 @@ import thunk from 'redux-thunk'
 
 import 'reflect-metadata'
 
-import Game from './components/Game'
-import reducers from './reducers'
-import theme from './theme'
+import Game from '@app/components/Game'
+import reducers from '@app/reducers'
+import theme from '@app/theme'
 
 const store = createStore(
     reducers,

@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import Modal from '@material-ui/core/Modal'
 import Paper from '@material-ui/core/Paper'
 
-import { AppState } from '../../reducers'
-import modalActions, { ModalActions, ModalEnum } from '../../store/modal/actions'
+import { AppState } from '@app/reducers'
+import modalActions, { ModalActions, ModalEnum } from '@app/store/modal/actions'
 
 import BriefModal from './brief/Brief'
 

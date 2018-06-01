@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import modalActions, { ModalEnum } from '../store/modal/actions'
+import modalActions, { ModalEnum } from '@app/store/modal/actions'
 
 import { Props as ComponentProps } from './Game'
 

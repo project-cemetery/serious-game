@@ -1,10 +1,10 @@
 import { Dispatch } from 'redux'
 import { Action } from 'redux-actions'
 
-import { AppState } from '../../reducers'
-import service from '../../services_'
-import TYPES from '../../services_/types'
-import WorldStateDeterminator from '../../services_/WorldStateDeterminator'
+import { AppState } from '@app/reducers'
+import service from '@app/services_'
+import TYPES from '@app/services_/types'
+import WorldStateDeterminator from '@app/services_/WorldStateDeterminator'
 
 const actionType = (name: string) => `brief/${name}`
 
