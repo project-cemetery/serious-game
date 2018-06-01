@@ -1,8 +1,14 @@
 import { combineReducers } from 'redux'
 
-// tslint:disable-next-line:no-empty-interface
+import briefReducers, { BriefState } from './store/brief/reducers'
+import modalReducers, { ModalState } from './store/modal/reducers'
+
 export interface AppState {
+    brief: BriefState
+    modal: ModalState
 }
 
 export default combineReducers({
+    brief: briefReducers,
+    modal: modalReducers,
 })

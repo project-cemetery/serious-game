@@ -2,20 +2,24 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
+import thunk from 'redux-thunk'
 
 import 'reflect-metadata'
 
-import App from './components/App'
+import Game from './components/Game'
 import reducers from './reducers'
 import theme from './theme'
 
-const store = createStore(reducers)
+const store = createStore(
+    reducers,
+    applyMiddleware(thunk),
+)
 
 ReactDOM.render(
     <Provider store={store}>
         <MuiThemeProvider theme={theme}>
-            <App />
+            <Game />
         </MuiThemeProvider>
     </Provider>,
     document.getElementById('root'),
