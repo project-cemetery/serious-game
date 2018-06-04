@@ -17,17 +17,19 @@ class Game extends React.PureComponent<Props> {
                 <ModalRoot />
 
                 <Grid container style={{ padding: '2rem', height: '100%' }}>
+
                     <Column>
                         <p>Actions!</p>
                         <p>Button</p>
                     </Column>
-                    <Grid item xs={6}>
-                        <p>VOID</p>
-                    </Grid>
+
+                    <Grid item xs={6} />
+
                     <Column>
                         <p>SMI =)</p>
                         <p>Button</p>
                     </Column>
+
                 </Grid>
             </React.Fragment>
         )
