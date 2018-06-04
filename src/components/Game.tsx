@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+import Grid from '@material-ui/core/Grid'
+
 import ModalRoot from '@app/components/modal/ModalRoot'
 
 import Container from './GameContainer'
@@ -13,11 +15,34 @@ class Game extends React.PureComponent<Props> {
         return (
             <React.Fragment>
                 <ModalRoot />
-                <p>GAME</p>
+
+                <Grid container style={{ padding: '2rem', height: '100%' }}>
+                    <Column>
+                        <p>Actions!</p>
+                        <p>Button</p>
+                    </Column>
+                    <Grid item xs={6}>
+                        <p>VOID</p>
+                    </Grid>
+                    <Column>
+                        <p>SMI =)</p>
+                        <p>Button</p>
+                    </Column>
+                </Grid>
             </React.Fragment>
         )
     }
-
 }
+
+interface ColumnProps {
+    children?: JSX.Element[] | JSX.Element,
+}
+
+const Column = ({ children }: ColumnProps) =>
+    <Grid item xs={3}>
+        <Grid container direction="column" style={{ height: '100%' }} justify="space-between">
+            {React.Children.map(children, (child) => <Grid item>{child}</Grid>)}
+        </Grid>
+    </Grid>
 
 export default Container(Game)
