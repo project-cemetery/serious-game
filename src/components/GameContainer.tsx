@@ -17,11 +17,12 @@ export default function(Component: React.ComponentClass<ComponentProps>) {
     class Wrapped extends React.Component<ConatinerProps> {
 
         public render() {
-            const { show } = this.props
+            return <Component />
+        }
 
-            return <Component showBrief={() => show!(ModalEnum.BRIEF)} />
+        public componentDidMount() {
+            this.props.show!(ModalEnum.BRIEF)
         }
     }
-
     return Wrapped
 }

@@ -4,10 +4,9 @@ import ModalRoot from '@app/components/modal/ModalRoot'
 
 import Container from './GameContainer'
 
+// tslint:disable-next-line:no-empty-interface
 export interface Props {
-    showBrief: () => void
 }
-
 class Game extends React.PureComponent<Props> {
 
     public render() {
@@ -17,10 +16,6 @@ class Game extends React.PureComponent<Props> {
                 <p>GAME</p>
             </React.Fragment>
         )
-    }
-
-    public componentDidMount() {
-        this.props.showBrief()
     }
 
 }
