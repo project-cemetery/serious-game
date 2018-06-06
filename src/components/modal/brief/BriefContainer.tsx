@@ -1,15 +1,14 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 
-import { AppState } from '../../../reducers'
-import briefActions from '../../../store/brief/actions'
+import { AppState } from '@app/reducers'
+import briefActions from '@app/store/brief/actions'
 
 import { Props as ComponentProps } from './Brief'
 
 interface Props {
     content?: string
 
-    hide?: () => void
     determine?: () => void
 }
 

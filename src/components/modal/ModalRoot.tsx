@@ -7,10 +7,12 @@ import Paper from '@material-ui/core/Paper'
 import { AppState } from '@app/reducers'
 import modalActions, { ModalActions, ModalEnum } from '@app/store/modal/actions'
 
+import ActionModal from './action/Action'
 import BriefModal from './brief/Brief'
 
 const MODAL_COMPONENTS = {
-    [ModalEnum.BRIEF]: BriefModal,
+    [ModalEnum.BRIEF]:  BriefModal,
+    [ModalEnum.ACTION]: ActionModal,
 }
 
 interface Props {

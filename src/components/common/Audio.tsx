@@ -5,7 +5,7 @@ interface Props {
     loop?: boolean
 }
 
-export default class Music extends React.Component<Props, {}> {
+export default class Music extends React.PureComponent<Props> {
 
     private audio: HTMLAudioElement
 

@@ -3,6 +3,7 @@ import * as React from 'react'
 import Grid from '@material-ui/core/Grid'
 
 import ModalRoot from '@app/components/modal/ModalRoot'
+import ActionsWidget from '@app/components/widget/actions/Actions'
 
 import Container from './GameContainer'
 
@@ -19,7 +20,7 @@ class Game extends React.PureComponent<Props> {
                 <Grid container style={{ padding: '2rem', height: '100%' }}>
 
                     <Column>
-                        <p>Actions!</p>
+                        <ActionsWidget />
                         <p>Button</p>
                     </Column>
 

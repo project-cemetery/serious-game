@@ -8,22 +8,23 @@ export const actionTypes = {
 }
 
 export enum ModalEnum {
-    BRIEF = 'brief',
+    BRIEF  = 'brief',
+    ACTION = 'action',
 }
 
 export interface ModalActions {
-    show?: (type: ModalEnum, id: string) => Action<{modal: ModalEnum, id: number}>
+    show?: (type: ModalEnum, id?: string) => Action<{modal: ModalEnum, id: string}>
     hide?: () => Action<{}>
 }
 
 export default {
-    show: (type: ModalEnum, id?: number) => ({
+    show: (type: ModalEnum, id?: string) => ({
         type: actionTypes.SHOW,
         payload: {
             modal: type,
             id,
         },
-    } as Action<{modal: ModalEnum, id?: number}>),
+    } as Action<{modal: ModalEnum, id?: string}>),
 
     hide: () => ({
         type: actionTypes.HIDE,

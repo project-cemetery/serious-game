@@ -1,4 +1,4 @@
-export default interface News {
-    title: string
-    text: string
-}
+// export default interface News {
+//     title: string
+//     text: string
+// }
