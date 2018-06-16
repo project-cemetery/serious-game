@@ -21,7 +21,8 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "test-ci": "CI=true react-scripts-ts test --env=jsdom --all",
+    "lint": "tslint -c tslint.json './src/**/*.{ts,tsx}'"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
