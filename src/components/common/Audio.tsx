@@ -1,18 +1,18 @@
 import * as React from 'react'
 
 interface Props {
-    audio: string
+    path: string
     loop?: boolean
 }
 
-export default class Music extends React.PureComponent<Props> {
+export default class AudioComponent extends React.PureComponent<Props> {
 
     private audio: HTMLAudioElement
 
     constructor(props: Props) {
         super(props)
 
-        this.audio = new Audio(props.audio)
+        this.audio = new Audio(props.path)
     }
 
     public render() {
