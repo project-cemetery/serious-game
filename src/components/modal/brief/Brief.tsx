@@ -12,7 +12,9 @@ export class Brief extends React.PureComponent<Props> {
         const { content } = this.props
 
         return (
-            <p>{content}</p>
+            <React.Fragment>
+                <p>{content}</p>
+            </React.Fragment>
         )
     }
 }
