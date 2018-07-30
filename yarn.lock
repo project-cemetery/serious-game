@@ -107,9 +107,16 @@
   version "10.1.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.1.2.tgz#1b928a0baa408fc8ae3ac012cc81375addc147c6"
 
-"@types/rc-slider@^8.2.3":
-  version "8.2.3"
-  resolved "https://registry.yarnpkg.com/@types/rc-slider/-/rc-slider-8.2.3.tgz#61eadafbb999f8ff11388ef9d0054accb20a7640"
+"@types/rc-slider@^8.2.4":
+  version "8.2.4"
+  resolved "https://registry.yarnpkg.com/@types/rc-slider/-/rc-slider-8.2.4.tgz#a40b4e04b360decfafba3b2c44ebcd3b607079d2"
+  dependencies:
+    "@types/rc-tooltip" "*"
+    "@types/react" "*"
+
+"@types/rc-tooltip@*":
+  version "3.4.11"
+  resolved "https://registry.yarnpkg.com/@types/rc-tooltip/-/rc-tooltip-3.4.11.tgz#994747ff45b91ac089170dbf6f622df4a8692de2"
   dependencies:
     "@types/react" "*"
 
