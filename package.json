@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.4.2",
-    "@material-ui/icons": "^2.0.0",
+    "@material-ui/icons": "^2.0.1",
     "emotion": "^9.2.6",
     "inversify": "^4.13.0",
     "rc-slider": "^8.6.1",
